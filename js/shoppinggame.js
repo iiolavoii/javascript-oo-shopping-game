@@ -1,23 +1,75 @@
 let gameComplete = false;
 // Define the three constants here
-
+const name = "unknown";
+const score = 0;
+const item = 0;
 // Define the player object here
+const player = {
+    name,
+    score,
+    items,
+    getCurrentScore(score){
+        return score;
+    },
+    addPoints(points){
+        return this.score + points;
+    },
+    deductPoints(points){
+        return this.score - points;
+    }
 
+};
 // Define the Product class - write the Constructor function for Product class here
+function Product(id, name, price, expiryDate){
+    this.id = id;
+    this.name = name;
+    this.price = price;
+    this.expiryDate = expiryDate;
 
+}
 // Complete the dateDiff function
-const dateDiff = (date1, date2) => {};
+const dateDiff = (date1, date2) => {
+    return date1.getDate - date2.getDate;
+};
 
 // Here, use Object.defineProperty to create property - daysToExpire
+Object.defineProperty(Product, "dayToExpire",{
+    get dayToExpire(){
+        return this.dateDiff(Product.expiryDate, new Date());
+    }
 
+})
 // Add method getDetails to Product here
-
+Product.prototype.getDetails = function(name, price){
+    return `Product Name: ${this.name} , Product Price: ${this.price}`
+}
 // Define the MagicProduct class here
-
+function MagicProduct(id, name, price, expiryDate, points, isBonus){
+    Product.call(this, id, name, price, expiryDate);
+    this.points = points;
+    this.isBonus = isBonus;
+}
 // Establish inheritance between Product() & MagicProduct() here
-
+Object.create(Product.prototype) = MagicProduct.prototype;
 // Define Rating class here
+class Rating{
+    constructor(rate){
+        this.rate = "";
+    }
 
+    set rating(rate, value){
+        if (value > 1 && value <= 4){
+            rate = "OK";
+        } else if( value >= 5 && value <= 7){
+            rate = "GOOD";
+        } else if( value > 7){
+            rate = "EXCEPTIONAL";
+        } else{
+            rate = "BAD";
+        }
+    }
+
+}
 // Complete the loadProducts function
 const loadProducts = (map, prodId) => {
     let a = new Array();
