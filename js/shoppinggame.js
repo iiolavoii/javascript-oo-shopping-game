@@ -54,19 +54,19 @@ MagicProduct.prototype = Object.create(Product.prototype);
 
 // Define Rating class here
 class Rating{
-    constructor(rate){
+    constructor(){
         this.rate = "";
     }
 
-    set rating(rate, value){
+    set rating(value){
         if (value > 1 && value <= 4){
-            rate = "OK";
+            this.rate = "OK";
         } else if( value >= 5 && value <= 7){
-            rate = "GOOD";
+            this.rate = "GOOD";
         } else if( value > 7){
-            rate = "EXCEPTIONAL";
+            this.rate = "EXCEPTIONAL";
         } else{
-            rate = "BAD";
+            this.rate = "BAD";
         }
     }
 
