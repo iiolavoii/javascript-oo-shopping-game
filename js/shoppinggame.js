@@ -71,6 +71,7 @@ class Rating{
     }
 
 }
+
 // Complete the loadProducts function
 const loadProducts = (map, prodId) => {
     let a = new Array();
@@ -422,6 +423,3 @@ function init(data) {
     exports.exitLost = exitLost;
     exports.exitWon = exitWon;
     exports.main = main;
-
-
-
